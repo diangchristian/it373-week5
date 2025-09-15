@@ -1,0 +1,14 @@
+body{
+    margin: 2rem;
+    font-family: system-ui, Arial, sans-serif;
+}
+
+
+nav a{
+    margin-right: .75rem;
+    text-decoration: none;
+}
+
+h1{
+    margin: 0 0 1rem;
+}
