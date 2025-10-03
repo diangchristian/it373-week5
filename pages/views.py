@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from pages.models import Post, Comment
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseBadRequest
+from pages.models import Post
+
 # Create your views here.
 
 def home(request):
@@ -37,3 +39,39 @@ def post_list(request):
     posts = Post.objects.all().prefetch_related('comments')
     return render(request, 'post_list.html', {'posts': posts})
 
+
+
+
+
+def post_create(request):
+    if request.method ==  'POST':
+        title = request.POST.get('title')
+        body = request.POST.get('body')
+        if not title or not body:
+            return HttpResponseBadRequest("Title and body are required.")
+        Post.objects.create(title=title, body=body)
+        return redirect('post_list')
+    return render(request, 'post_form.html')
+
+
+def post_view(request, pk):
+    # post = get_object_or_404(Post, pk=pk)
+    post = Post.objects.get(pk=pk)
+    return render(request, 'post_view.html', {'post': post})
+
+
+def post_update(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        post.title = request.POST.get('title') or post.title
+        post.body = request.POST.get('body') or post.body
+        post.save()
+        return redirect('post_view', pk=pk)
+    return render(request, 'post_form.html', {'post': post})
+
+def post_delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('post_list')
+    return render(request, 'post_confirm_delete.html', {'post': post})
