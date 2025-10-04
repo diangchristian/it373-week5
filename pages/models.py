@@ -1,22 +1,19 @@
+from django.core.validators import MinLengthValidator 
 from django.db import models
-
 # Create your models here.
 
 class Post (models.Model):
-    title = models.CharField(max_length=100)
-    body = models.TextField()
+    title = models.CharField(max_length=100, validators=[MinLengthValidator(3)])
+    body = models.TextField(validators=[MinLengthValidator(10)])
     created_at = models.DateTimeField(auto_now_add=True)
-
-
 
     #to get the latest the data or to filter by dates in ascending
     class Meta:
         ordering = ['-created_at']
-
+        constraints = [models.UniqueConstraint(fields=['title'], name='unique_post_title')]
 
     def __str__(self):
         return self.title
-
 
 class Comment(models.Model):
     #sets a pk  fk relation to the post model

@@ -1,0 +1,79 @@
+[
+    {
+        "model": "pages.post",
+        "pk": 1,
+        "fields": {
+            "title": "My First Post",
+            "body": "This is the body of my first post.",
+            "created_at": "2024-06-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "pages.post",
+        "pk": 2,
+        "fields": {
+            "title": "My Second Post",
+            "body": "This is the body of my second post.",
+            "created_at": "2024-06-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "pages.post",
+        "pk": 3,
+        "fields": {
+            "title": "My Third Post",
+            "body": "This is the body of my third post.",
+            "created_at": "2024-06-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "pages.post",
+        "pk": 4,
+        "fields": {
+            "title": "My Fourth Post",
+            "body": "This is the body of my fourth post.",
+            "created_at": "2024-06-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "pages.post",
+        "pk": 5,
+        "fields": {
+            "title": "My Fifth Post",
+            "body": "This is the body of my fifth post.",
+            "created_at": "2024-06-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "pages.comment",
+        "pk": 1,
+        "fields": {
+            "post": 1,
+            "author": "Alice",
+            "text": "Nice post bro",
+            "created_at": "2024-06-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "pages.comment",
+        "pk": 2,
+        "fields": {
+            "post": 5,
+            "author": "Juan",
+            "text": "WOWOWOWOWWO",
+            "created_at": "2025-09-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "pages.comment",
+        "pk": 3,
+        "fields": {
+            "post": 4,
+            "author": "Peter",
+            "text": "gg sayo sah",
+            "created_at": "2025-09-01T12:00:00Z"
+        }
+    }
+    
+
+]
